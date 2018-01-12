@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validation</title>
+
+</head>
+
+<body style="margin-left: auto;margin-right: auto;width: 75%;">
+
+<div style="margin-left: 40%;margin-right: 40%;max-width: 40%;min-width: 10%;display: inline-block">
+<body>
+<h1>Exam Entry Form</h1>
+<form name="ExamEntry" action="page2.html" method="post">Full name:
+    <label>
+        <input type="text" name="fullName" style="float: right">
+    </label>
+    <br>
+    <br>Subject:
+    <input type="text" name="Subject" style="float: right">
+    <br>
+    <br>Examination number:
+    <input type="text" name="ExaminationNumber" min="0001" max="9999" maxlength="4" size="10" style="float: right">
+    <br>
+    <br>
+    <input type="radio" name="exam" value="gcse" checked> GCSE<br>
+    <input type="radio" name="exam" value="a2"> A2-Level<br>
+    <input type="radio" name="exam" value="as"> AS-Level<br>
+    <p></p>
+    <input type="submit" value="Submit" onclick="validateForm(); return false">
+    <input type="reset" value="Reset">
+</form>
+</div>
+
+
+<script>
+    function validateForm() {
+        var x = document.forms["ExamEntry"]["fullName"].value;
+        var y = document.forms["ExamEntry"]["Subject"].value;
+        var z = document.forms["ExamEntry"]["ExaminationNumber"].value;
+        if (y == null || y == "" || x == null || x == "" || z == null || z == "") {
+            alert("Name, subject and the Examination number must be filled out");
+            return false;
+        }
+        Radiobutton();
+    }
+
+    function Radiobutton() {
+        if (confirm("Is that the correct course?") == true) {
+            window.location.href = 'page2.html';
+        } else {
+            window.location.href = '#';
+        }
+    }
+</script>
+
+</body>
+</html>
+
